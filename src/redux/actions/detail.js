@@ -1,15 +1,15 @@
-const GET_MENU = "GET_MENU";
+const GET_DETAIL = "GET_DETAIL";
 
-const getMenu = (datas) => {
+const getDetail = (datas) => {
     return {
-        type: GET_MENU,
+        type: GET_DETAIL,
         datas,
     };
 };
 
-const fetchMenu = (id) => async (dispatch) => {
+const fetchDetail = (id) => async (dispatch) => {
     console.log(id)
-    const url = `https://developers.zomato.com/api/v2.1/dailymenu?res_id=${id}`;
+    const url = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${id}`;
     const option = {
         method:'GET',
         headers: {
@@ -20,7 +20,7 @@ const fetchMenu = (id) => async (dispatch) => {
     const response = await fetch(url,option);
     const result = await response.json();
   
-    dispatch(getMenu(result));
+    dispatch(getDetail(result));
 };
 
-export { GET_MENU, getMenu, fetchMenu };
+export { GET_DETAIL, getDetail, fetchDetail };
