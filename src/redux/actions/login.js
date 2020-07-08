@@ -26,7 +26,7 @@ function login(formData, history) {
         history.push("/userPage");
       }
     } else {
-      alert("Email Anda belum terdatar");
+      alert("Email Anda belum terdaftar");
     }
   };
 }
