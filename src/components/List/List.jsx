@@ -16,16 +16,25 @@ margin: 20px;
 `;
 const Container = Styled.div`
 padding: 2px 16px;
+display: flex;
+flex-direction: column;
 }
 `;
-const Title = Styled.h2`
+const Title = Styled.h3`
 font-size: 24px;
+text-align: center;
 `;
-const Address = Styled.p`
-font-size: 20px;
+const Button = Styled.button`
+a{
+    color: black;
+    text-decoration: none;
+}
+width: 50%;
+align-self: center;
 `;
 const Image = Styled.img`
 width: 80%;
+margin: 20px 40px 0 40px;
 `;
 const FlexWrap = Styled.div`
 display: flex;
@@ -42,6 +51,7 @@ function List(props) {
     console.log(props.restaurants);
     return (
         <div>
+            <Title as="h1">Cari Makan</Title>
             <FlexWrap>
                 {props.restaurants !== undefined &&
                     props.restaurants.map((item) => {
@@ -54,14 +64,14 @@ function List(props) {
                                 <Container>
                                     <Title>{item.restaurant.name}</Title>
 
-                                    <button>
+                                    <Button>
                                         {" "}
                                         <Link
                                             to={`/restaurants/${item.restaurant.id}`}
                                         >
                                             Detail
                                         </Link>
-                                    </button>
+                                    </Button>
                                 </Container>
                             </Cards>
                         );
