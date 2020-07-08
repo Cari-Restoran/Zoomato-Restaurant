@@ -1,36 +1,32 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from "react";
 
 import { fetchMenu } from "../../redux/actions";
 import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function Desc(props) {
-  
-    useEffect(() => {
-        
-        props.dispatch(fetchMenu());
-        console.log(props)
-        // eslint-disable-next-line
-    }, []);
+  const { id } = useParams();
 
-    return (
-        <div>
-            {props.daily_menus !== undefined && 
-            props.daily_menus.map((item)=> {
-                return (
+  useEffect(() => {
+    props.dispatch(fetchMenu(id));
+    console.log(props);
+    // eslint-disable-next-line
+  }, []);
 
-                    <h3>{item.name}</h3>
-                )
-            })}
-        </div>
-    )
+  return (
+    <div>
+      {props.daily_menus !== undefined &&
+        props.daily_menus.map((item) => {
+          return <h3>{item.name}</h3>;
+        })}
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.desc)
-    return {
-        detail: state.desc,
-    }    
-    
-    
+  console.log(state.desc);
+  return {
+    detail: state.desc,
+  };
 };
-export default connect(mapStateToProps,null)(Desc)
+export default connect(mapStateToProps, null)(Desc);
