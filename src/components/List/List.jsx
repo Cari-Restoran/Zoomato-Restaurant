@@ -10,9 +10,14 @@ function List(props) {
 
     return (
         <div>
-            <h1>hello</h1>
+            <div>{props.restaurant.map()}</div>
         </div>
     );
 }
 
-export default connect()(List);
+const mapStateToProps = (state) => {
+    return {
+        restaurants: state.restaurants,
+    };
+};
+export default connect(mapStateToProps)(List);

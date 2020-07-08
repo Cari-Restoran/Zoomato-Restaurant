@@ -10,10 +10,16 @@ const getList = (data) => {
 const fetchListRestaurant = () => async (dispatch) => {
     const url =
         "https://developers.zomato.com/api/v2.1/search?entity_id=74&entity_type=city";
-
-    const response = await fetch(url);
+    const options = {
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "user-key": "79153cbd47b4b1c0805bac2a97dc5fc8",
+        },
+    };
+    const response = await fetch(url, options);
     const result = await response.json();
-
+    console.log(result);
     dispatch(getList(result));
 };
 
