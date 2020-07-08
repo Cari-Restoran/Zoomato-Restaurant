@@ -7,17 +7,31 @@ function List(props) {
         props.dispatch(fetchListRestaurant());
         // eslint-disable-next-line
     }, []);
-
+    console.log(props.restaurants);
     return (
         <div>
-            <div>{props.restaurant.map()}</div>
+            <div>
+                {props.restaurants !== undefined &&
+                    props.restaurants.map((item) => {
+                        return (
+                            <div>
+                                <p></p>
+                                <img
+                                    src={item.restaurant.featured_image}
+                                    alt="restaurants"
+                                />
+                                <p>{item.restaurant.name}</p>
+                            </div>
+                        );
+                    })}
+            </div>
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state.restaurants,
+        restaurants: state.list.restaurants,
     };
 };
-export default connect(mapStateToProps)(List);
+export default connect(mapStateToProps, null)(List);
