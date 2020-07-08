@@ -10,24 +10,22 @@ function ButtonLogin(props) {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-
-  // const externalCloseBtn = (
-  //   <button
-  //     className="close"
-  //     style={{ position: "absolute", top: "15px", right: "15px" }}
-  //     onClick={toggle}
-  //   >
-  //     &times;
-  //   </button>
-  // );
-
   return (
     <div>
-      <Button style={{ background: "#f4404c" }} onClick={toggle}>
+      <Button
+        style={{
+          background: "#f4404c",
+          fontFamily: "Zoomato",
+          fontSize: "30px",
+          width: "5em",
+          margin: "0 1em",
+        }}
+        onClick={toggle}
+      >
         Sign In
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
           <LoginForm />
         </ModalBody>
