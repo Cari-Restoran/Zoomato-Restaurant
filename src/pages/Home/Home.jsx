@@ -5,6 +5,9 @@ import HomeJumbotron from "../../components/HomeJumbotron/HomeJumbotron";
 import ButtonLogin from "../../components/ButtonLogin/ButtonLogin";
 import ButtonRegister from "../../components/ButtonRegister/ButtonRegister";
 
+const Div = styled.div`
+  background-color: #000;
+`;
 const Buttons = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +17,7 @@ const Buttons = styled.div`
 
 function Home() {
   return (
-    <div>
+    <Div>
       <HomeJumbotron />
       <Buttons>
         <div>
@@ -24,7 +27,7 @@ function Home() {
           <ButtonRegister />
         </div>
       </Buttons>
-    </div>
+    </Div>
   );
 }
 
