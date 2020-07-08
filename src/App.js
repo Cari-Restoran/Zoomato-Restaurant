@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import styled from "styled-components";
+// import styled from "styled-components";
 
-import { Register } from "./pages";
+import { Register, Login, ListRestaurant } from "./pages";
 import reducers from "./redux/reducers";
 
 function App() {
@@ -19,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/userPage">
+            <ListRestaurant />
           </Route>
         </Switch>
       </Router>
