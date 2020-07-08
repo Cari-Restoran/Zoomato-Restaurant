@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import reducers from "./redux/reducers";
 import thunk from "redux-thunk";
@@ -9,7 +10,9 @@ import ListRestaurant from "./pages/ListRestaurants/ListRestaurant";
 function App() {
     return (
         <Provider store={createStore(reducers, applyMiddleware(thunk))}>
-            <ListRestaurant />
+            <Router>
+                <ListRestaurant />
+            </Router>
         </Provider>
     );
 }
