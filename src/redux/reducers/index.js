@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux';
 import desc from './desc';
-export default combineReducers({desc})
+import detail from './detail'
+export default combineReducers({desc,detail})
