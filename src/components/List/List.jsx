@@ -34,6 +34,7 @@ a{
 }
 width: 50%;
 align-self: center;
+margin-bottom: 10px;
 `;
 const Image = Styled.img`
 width: 80%;
