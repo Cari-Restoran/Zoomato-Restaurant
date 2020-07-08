@@ -9,7 +9,6 @@ const getMenu = (datas) => {
 
 const fetchMenu = (id) => async (dispatch) => {
   console.log(id);
-  //   const url = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${id}`;
   const url = `https://developers.zomato.com/api/v2.1/dailymenu?res_id=${id}`;
   const option = {
     method: "GET",

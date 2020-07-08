@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
-import { fetchMenu } from "../../redux/actions";
-import { fetchDetail } from "../../redux/actions";
+import { fetchMenu, fetchDetail } from "../../redux/actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
