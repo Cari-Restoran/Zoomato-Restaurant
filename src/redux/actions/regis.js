@@ -14,7 +14,7 @@ function regis(formData, history) {
 
     if (response.status === 201) {
       alert("Pendaftaran berhasil");
-      history.push("/login");
+      history.push("/");
     }
   };
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, FormGroup, Input, Button } from "reactstrap";
 
 import { regis } from "../../redux/actions";
 import { connect } from "react-redux";
@@ -25,9 +26,9 @@ function RegisterForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Input
             type="text"
             name="name"
             id="name"
@@ -35,9 +36,9 @@ function RegisterForm(props) {
             onChange={handleChange}
             value={form.name}
           />
-        </div>
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
             type="email"
             name="email"
             id="email"
@@ -45,9 +46,9 @@ function RegisterForm(props) {
             onChange={handleChange}
             value={form.email}
           />
-        </div>
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
             type="text"
             name="contact"
             id="contact"
@@ -55,9 +56,9 @@ function RegisterForm(props) {
             onChange={handleChange}
             value={form.contact}
           />
-        </div>
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
             type="password"
             name="password"
             id="password"
@@ -65,11 +66,13 @@ function RegisterForm(props) {
             onChange={handleChange}
             value={form.password}
           />
-        </div>
-        <div>
-          <button type="submit">Create Account</button>
-        </div>
-      </form>
+        </FormGroup>
+        <FormGroup>
+          <Button type="submit" color="primary">
+            Create Account
+          </Button>
+        </FormGroup>
+      </Form>
     </div>
   );
 }

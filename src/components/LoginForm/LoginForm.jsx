@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { Form, FormGroup, Input, Button } from "reactstrap";
 
 import { login } from "../../redux/actions";
 
@@ -25,9 +26,9 @@ function LoginForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Input
             type="email"
             name="email"
             id="email"
@@ -35,9 +36,9 @@ function LoginForm(props) {
             value={form.email}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
             type="password"
             name="password"
             id="password"
@@ -45,11 +46,13 @@ function LoginForm(props) {
             value={form.password}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
+        </FormGroup>
+        <FormGroup>
+          <Button type="submit" color="primary">
+            Login
+          </Button>
+        </FormGroup>
+      </Form>
     </div>
   );
 }

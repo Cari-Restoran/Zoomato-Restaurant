@@ -8,6 +8,7 @@ import logger from "redux-logger";
 
 import { Register, Login, ListRestaurant } from "./pages";
 import reducers from "./redux/reducers";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/register">
             <Register />
           </Route>
           <Route exact path="/login">
