@@ -7,6 +7,7 @@ import ButtonRegister from "../../components/ButtonRegister/ButtonRegister";
 
 const Div = styled.div`
   background-color: #000;
+  height: 100vh;
 `;
 const Buttons = styled.div`
   display: flex;
