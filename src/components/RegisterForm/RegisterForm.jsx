@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, FormGroup, Input, Button } from "reactstrap";
+import { connect } from "react-redux";
+import swal from "sweetalert";
 
 import { regis } from "../../redux/actions";
-import { connect } from "react-redux";
 
 function RegisterForm(props) {
   const history = useHistory();
@@ -20,8 +21,15 @@ function RegisterForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    props.dispatch(regis(form, history));
+    if (form.name === "" || form.contact === "" || form.email === "") {
+      swal(
+        "Warning",
+        "You need to complete all information in the registration form!",
+        "warning"
+      );
+    } else {
+      props.dispatch(regis(form, history));
+    }
   };
 
   return (
