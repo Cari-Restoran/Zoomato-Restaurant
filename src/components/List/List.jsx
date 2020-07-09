@@ -29,15 +29,7 @@ const Title = Styled.h3`
 font-size: 24px;
 text-align: center;
 `;
-const Button = Styled.button`
-a{
-    color: black;
-    text-decoration: none;
-}
-width: 50%;
-align-self: center;
-margin-bottom: 10px;
-`;
+
 const Image = Styled.img`
 width: 80%;
 margin: 20px 40px 0 40px;
