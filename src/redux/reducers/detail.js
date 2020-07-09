@@ -1,6 +1,6 @@
 import { GET_DETAIL } from "../actions";
 
-const initialState = [];
+const initialState = {};
 export default(state = initialState, actions) =>  {
     switch (actions.type) {
         case GET_DETAIL:
