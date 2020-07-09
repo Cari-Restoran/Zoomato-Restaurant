@@ -4,27 +4,39 @@ import { fetchMenu } from "../../redux/actions";
 import {fetchDetail} from '../../redux/actions'
 import { connect } from "react-redux";
 import {useParams} from 'react-router-dom'
+import img from '../../assets/images/Untitled.png'
 
-import styled from 'styled-components'
+import {
+    Card, CardText, CardBody
+  } from 'reactstrap';
+  
+import styled from 'styled-components';
 const Div = styled.div`
-    width:500px;
-    display:flex;
-    margin:auto;
-    margin-top:50px;
+  width:600px;
+  margin:auto;
+  display:flex;
+  margin-top:50px;
+  justify-content:space-evenly;
+`;
+const SectionCard = styled.div`
+  width:300px;
+  background-color:#EE4344;
+  border:1px solid black;
 
 `;
-const Card = styled.div`
-    width:300px;
-    & img {
-        max-width:200px;
-    }
+
+const SectionMenu = styled.div`
+  width:300px;
+  text-align:center;
+  background-color:white;
 `;
 
-const Item = styled.div`
-    display:flex;
-    flex-direction:column;
-`;
+const Main = styled.div`
+background-image:url(${img})
 
+
+
+`;
 function Desc(props) {
     // let index = 0;
     let {id} = useParams();
@@ -41,34 +53,46 @@ function Desc(props) {
 
     function input(){
         return (
-            <Card>
-                    <img src={props.detail.featured_image} alt="food"/>
-                    <h3>{props.detail.average_cost_for_two}</h3>
-                    <h3>{props.detail.location.address}</h3>
-                    <h3>{props.detail.name}</h3>
-            </Card>
+                <SectionCard>
+                     <Card>
+                         <img width='100%' src={props.detail.featured_image} alt="food"/>
+                     <CardBody>
+                     <CardText>
+                        <h3>{props.detail.name}</h3>
+                        <p>Average Price : {props.detail.average_cost_for_two}</p>
+                        <p>Address: {props.detail.location.address}</p>
+                    </CardText>
+                    </CardBody>
+                    </Card>
+                </SectionCard>
+              
         )
     };
   
     return (
+        <Main>
+
         <Div>
             {props.detail.R !== undefined &&
             input()
             }
 
-            <div>
+            <SectionMenu>
+
+            <h2>MENU</h2>
 
             {props.desc !== undefined &&
             props.desc.map((item )=> {
                 return (
-                    <Item >                  
-                    <h4>{item.daily_menu.name}</h4>
-                   </Item>
+                    <div >                  
+                    <p>{item.daily_menu.name}</p>
+                   </div>
                 )
              })}
-            </div>
+            </SectionMenu>
        
         </Div>
+        </Main>
     )
 }      
 
