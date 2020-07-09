@@ -65,7 +65,7 @@ function List(props) {
         {props.restaurants !== undefined &&
           props.restaurants.map((item) => {
             return (
-              <Cards>
+              <Cards key={item.id}>
                 <Image
                   src={item.restaurant.featured_image}
                   alt="Card image cap"
