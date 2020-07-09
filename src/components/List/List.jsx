@@ -28,7 +28,7 @@ flex-direction: column;
 const Title = Styled.h3`
 font-size: 24px;
 text-align: center;
-background-color: #e43444;
+
 padding: 10px;
 `;
 
@@ -43,10 +43,11 @@ display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
 box-sizing: border-box;
-background-color: black;
+background-color: white;
 `;
 const ColorBlack = Styled.div`
-background-color: black;
+background-color: white;
+padding
 `;
 
 function List(props) {
@@ -57,7 +58,9 @@ function List(props) {
   console.log(props.restaurants);
   return (
     <ColorBlack>
-      <Title as="h1">Cari Makan</Title>
+      <Title as="h1" style={{ background: "rgba(244, 64, 76, 0.5)" }}>
+        Temukan Restoran Favoritmu
+      </Title>
       <FlexWrap>
         {props.restaurants !== undefined &&
           props.restaurants.map((item) => {
