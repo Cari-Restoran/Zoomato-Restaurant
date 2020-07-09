@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { fetchListRestaurant } from "../../redux/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { ButtonToggle } from "reactstrap";
 
 import Styled from "styled-components";
 
@@ -9,6 +10,7 @@ const Cards = Styled.div`
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 transition: 0.3s;
 width: 25%;
+
 margin: 20px;
 &:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -68,14 +70,13 @@ function List(props) {
                                 <Container>
                                     <Title>{item.restaurant.name}</Title>
 
-                                    <Button>
-                                        {" "}
+                                    <ButtonToggle color="info">
                                         <Link
                                             to={`/restaurants/${item.restaurant.id}`}
                                         >
                                             Detail
                                         </Link>
-                                    </Button>
+                                    </ButtonToggle>
                                 </Container>
                             </Cards>
                         );
