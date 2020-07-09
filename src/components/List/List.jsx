@@ -48,46 +48,44 @@ box-sizing: border-box;
 `;
 
 function List(props) {
-    useEffect(() => {
-        props.dispatch(fetchListRestaurant());
-        // eslint-disable-next-line
-    }, []);
-    console.log(props.restaurants);
-    return (
-        <div>
-            <Title as="h1">Cari Makan</Title>
-            <FlexWrap>
-                {props.restaurants !== undefined &&
-                    props.restaurants.map((item) => {
-                        return (
-                            <Cards>
-                                <Image
-                                    src={item.restaurant.featured_image}
-                                    alt="Card image cap"
-                                />
-                                <Container>
-                                    <Title>{item.restaurant.name}</Title>
+  useEffect(() => {
+    props.dispatch(fetchListRestaurant());
+    // eslint-disable-next-line
+  }, []);
 
-                                    <Button>
-                                        {" "}
-                                        <Link
-                                            to={`/restaurants/${item.restaurant.id}`}
-                                        >
-                                            Detail
-                                        </Link>
-                                    </Button>
-                                </Container>
-                            </Cards>
-                        );
-                    })}
-            </FlexWrap>
-        </div>
-    );
+  return (
+    <div>
+      <Title as="h1">Cari Makan</Title>
+      <FlexWrap>
+        {props.restaurants !== undefined &&
+          props.restaurants.map((item) => {
+            return (
+              <Cards key={item.restaurant.id}>
+                <Image
+                  src={item.restaurant.featured_image}
+                  alt="Card image cap"
+                />
+                <Container>
+                  <Title>{item.restaurant.name}</Title>
+
+                  <Button>
+                    {" "}
+                    <Link to={`/restaurants/${item.restaurant.id}`}>
+                      Detail
+                    </Link>
+                  </Button>
+                </Container>
+              </Cards>
+            );
+          })}
+      </FlexWrap>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
-    return {
-        restaurants: state.list.restaurants,
-    };
+  return {
+    restaurants: state.list.restaurants,
+  };
 };
 export default connect(mapStateToProps, null)(List);
