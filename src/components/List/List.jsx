@@ -10,7 +10,7 @@ const Cards = Styled.div`
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 transition: 0.3s;
 width: 25%;
-
+background-color: #e43444;
 margin: 20px;
 &:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -28,17 +28,25 @@ flex-direction: column;
 const Title = Styled.h3`
 font-size: 24px;
 text-align: center;
+background-color: #e43444;
+padding: 10px;
 `;
 
 const Image = Styled.img`
 width: 80%;
 margin: 20px 40px 0 40px;
+
+
 `;
 const FlexWrap = Styled.div`
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
 box-sizing: border-box;
+background-color: black;
+`;
+const ColorBlack = Styled.div`
+background-color: black;
 `;
 
 function List(props) {
@@ -48,7 +56,7 @@ function List(props) {
     }, []);
     console.log(props.restaurants);
     return (
-        <div>
+        <ColorBlack>
             <Title as="h1">Cari Makan</Title>
             <FlexWrap>
                 {props.restaurants !== undefined &&
@@ -61,20 +69,20 @@ function List(props) {
                                 />
                                 <Container>
                                     <Title>{item.restaurant.name}</Title>
-
-                                    <ButtonToggle color="info">
+                                    <ButtonToggle color="warning">
                                         <Link
+                                            style={{ color: "black" }}
                                             to={`/restaurants/${item.restaurant.id}`}
                                         >
-                                            Detail
-                                        </Link>
+                                            Detail Info
+                                        </Link>{" "}
                                     </ButtonToggle>
                                 </Container>
                             </Cards>
                         );
                     })}
             </FlexWrap>
-        </div>
+        </ColorBlack>
     );
 }
 
