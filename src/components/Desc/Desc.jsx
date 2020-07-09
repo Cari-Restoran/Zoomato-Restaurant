@@ -17,11 +17,16 @@ const Div = styled.div`
   display:flex;
   margin-top:50px;
   justify-content:space-evenly;
+  @media (max-width:768px){
+    width:80%;
+}
 `;
 const SectionCard = styled.div`
   width:300px;
   background-color:#EE4344;
-  border:1px solid black;
+  @media (max-width:768px){
+    width:auto;
+}
 
 `;
 
@@ -29,6 +34,9 @@ const SectionMenu = styled.div`
   width:300px;
   text-align:center;
   background-color:white;
+  @media (max-width:768px){
+    width:auto;
+}
 `;
 
 const Main = styled.div`
@@ -37,6 +45,7 @@ background-image:url(${img})
 
 
 `;
+
 function Desc(props) {
     // let index = 0;
     let {id} = useParams();
