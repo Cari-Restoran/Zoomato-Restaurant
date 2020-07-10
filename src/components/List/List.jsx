@@ -49,6 +49,8 @@ background-color: white;
 `;
 const ColorBlack = Styled.div`
 background-color: white;
+font-family: "Zoomato";
+letter-spacing: 4px;
 `;
 
 const HoverZoom = Styled.div`
@@ -70,7 +72,10 @@ function List(props) {
     console.log(props.restaurants);
     return (
         <ColorBlack>
-            <Title as="h1" style={{ background: "rgba(244, 64, 76, 0.5)" }}>
+            <Title
+                as="h1"
+                style={{ background: "rgb(244, 64, 76)", fontSize: "2rem" }}
+            >
                 Temukan Restoran Favoritmu
             </Title>
             <FlexWrap>
