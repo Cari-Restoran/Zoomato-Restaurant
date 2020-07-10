@@ -35,7 +35,7 @@ padding: 10px;
 const Image = Styled.img`
 transform-origin: 50% 65%;
 transition: transform 5s, filter 3s ease-in-out;
-filter: brightness(150%);
+filter: brightness(120%);
 width: 100%;
 height: 190px;
 objecy-fit: cover;
