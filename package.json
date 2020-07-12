@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "node-modules": "^1.0.1",
+    "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-app": "^1.1.2",
     "react-dom": "^16.13.1",
@@ -15,8 +15,10 @@
     "react-scripts": "3.4.1",
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

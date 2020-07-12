@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Desc from '../../components/Desc/Desc'
 import HomeJumbotron from "../../components/HomeJumbotron/HomeJumbotron";
@@ -12,4 +13,4 @@ function DescriptionRestaurants() {
     )
 }
 
-export default DescriptionRestaurants
+export default DescriptionRestaurants;

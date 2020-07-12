@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from "react";
 
-import { fetchMenu } from "../../redux/actions";
-import {fetchDetail} from '../../redux/actions'
+import { fetchMenu, fetchDetail } from "../../redux/actions";
 import { connect } from "react-redux";
 import {useParams} from 'react-router-dom'
 import img from '../../assets/images/phone.png'
@@ -81,17 +80,18 @@ width:auto;
 function Desc(props) {
     let {id} = useParams();
 
-    useEffect(() => {
-        props.dispatch(fetchMenu(id));
-        // eslint-disable-next-line
-    }, []);
 
-    useEffect(() => {
-        props.dispatch(fetchDetail(id))
-        // eslint-disable-next-line
-    }, []);
+  useEffect(() => {
+    props.dispatch(fetchMenu(id));
+    // eslint-disable-next-line
+  }, []);
 
-    function input(){
+  useEffect(() => {
+    props.dispatch(fetchDetail(id));
+    // eslint-disable-next-line
+  }, []);
+
+   function input(){
         return (
                 <SectionCard>
                     <Card>
@@ -156,6 +156,6 @@ const mapStateToProps = (state) => {
         detail:state.detail,
     }    
     
-    
+
 };
-export default connect(mapStateToProps,null)(Desc)
+export default connect(mapStateToProps, null)(Desc);
