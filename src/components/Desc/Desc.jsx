@@ -4,50 +4,81 @@ import { fetchMenu } from "../../redux/actions";
 import {fetchDetail} from '../../redux/actions'
 import { connect } from "react-redux";
 import {useParams} from 'react-router-dom'
-import img from '../../assets/images/Untitled.png'
+import img from '../../assets/images/phone.png'
 
-import {
-    Card, CardText, CardBody
-  } from 'reactstrap';
-  
 import styled from 'styled-components';
+
+const Content = styled.div`
+width:50%;
+text-align: center;
+padding-right:80px;
+`;
+
 const Div = styled.div`
-  width:600px;
+  width:auto;
   margin:auto;
   display:flex;
   margin-top:50px;
+  flex-direction:column;
   justify-content:space-evenly;
   @media (max-width:768px){
     width:80%;
+    display:flex;
+    flex-direction:column;
 }
 `;
+
+
+
 const SectionCard = styled.div`
-  width:300px;
-  background-color:#EE4344;
+  width:auto;
+  background-color:white;
+  text-align:center;
+  display:flex;
+  justify-content:space-evenly;
+  
   @media (max-width:768px){
     width:auto;
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    
 }
 
+`;
+
+const Card = styled.div`
+    && img {
+        width:50%;
+    }
+    @media (max-width:768px){
+        && img {
+            width:100%;
+        }
+    }
 `;
 
 const SectionMenu = styled.div`
   width:300px;
   text-align:center;
-  background-color:white;
+  background:#EE4344;
+  text-align:center;
+    margin:auto;
   @media (max-width:768px){
-    width:auto;
+    width:300px;
+    background:#EE4344;
+    text-align:center;
+    margin:auto;
+
 }
 `;
 
 const Main = styled.div`
-background-image:url(${img})
-
-
+width:auto;
 
 `;
 
 function Desc(props) {
-    // let index = 0;
     let {id} = useParams();
 
     useEffect(() => {
@@ -63,16 +94,23 @@ function Desc(props) {
     function input(){
         return (
                 <SectionCard>
-                     <Card>
-                         <img width='100%' src={props.detail.featured_image} alt="food"/>
-                     <CardBody>
-                     <CardText>
-                        <h3>{props.detail.name}</h3>
+                    <Card>
+
+                         <img src={props.detail.featured_image} alt="food"/>
+
+                    </Card>
+ 
+                     <Content>
+
+                        <p><strong>{props.detail.name}</strong></p>
                         <p>Average Price : {props.detail.average_cost_for_two}</p>
                         <p>Address: {props.detail.location.address}</p>
-                    </CardText>
-                    </CardBody>
-                    </Card>
+                        <a href={`tel:${props.detail.phone_numbers}`}><img src={img} alt='logo' width="36px"/></a>
+                       
+                     </Content>
+
+
+                  
                 </SectionCard>
               
         )
@@ -91,12 +129,17 @@ function Desc(props) {
             <h2>MENU</h2>
 
             {props.desc !== undefined &&
-            props.desc.map((item )=> {
-                return (
-                    <div >                  
-                    <p>{item.daily_menu.name}</p>
-                   </div>
-                )
+           //eslint-disable-next-line
+             props.desc.map((item )=> {
+                if (item.daily_menu.name !== null) {
+                    
+                    return (
+                        <div >                  
+                        <p>{item.daily_menu.name}</p>
+                       </div>
+                    )
+                }
+             
              })}
             </SectionMenu>
        
@@ -109,7 +152,6 @@ function Desc(props) {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        // detail: state.desc,
         desc:state.desc.daily_menus,
         detail:state.detail,
     }    
