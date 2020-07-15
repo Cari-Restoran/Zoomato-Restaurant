@@ -2,46 +2,84 @@ import React, { useEffect } from "react";
 
 import { fetchMenu, fetchDetail } from "../../redux/actions";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
-import img from "../../assets/images/Untitled.png";
+import {useParams} from 'react-router-dom'
+import img from '../../assets/images/phone.png'
 
-import { Card, CardText, CardBody } from "reactstrap";
+import styled from 'styled-components';
 
-import styled from "styled-components";
-const Div = styled.div`
-  width: 600px;
-  margin: auto;
-  display: flex;
-  margin-top: 50px;
-  justify-content: space-evenly;
-  @media (max-width: 768px) {
-    width: 80%;
-  }
+const Content = styled.div`
+width:50%;
+text-align: center;
+padding-right:80px;
 `;
+
+const Div = styled.div`
+  width:auto;
+  margin:auto;
+  display:flex;
+  margin-top:50px;
+  flex-direction:column;
+  justify-content:space-evenly;
+  @media (max-width:768px){
+    width:80%;
+    display:flex;
+    flex-direction:column;
+}
+`;
+
+
+
 const SectionCard = styled.div`
-  width: 300px;
-  background-color: #ee4344;
-  @media (max-width: 768px) {
-    width: auto;
-  }
+  width:auto;
+  background-color:white;
+  text-align:center;
+  display:flex;
+  justify-content:space-evenly;
+  
+  @media (max-width:768px){
+    width:auto;
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    
+}
+
+`;
+
+const Card = styled.div`
+    && img {
+        width:50%;
+    }
+    @media (max-width:768px){
+        && img {
+            width:100%;
+        }
+    }
 `;
 
 const SectionMenu = styled.div`
-  width: 300px;
-  text-align: center;
-  background-color: white;
-  @media (max-width: 768px) {
-    width: auto;
-  }
+  width:300px;
+  text-align:center;
+  background:#EE4344;
+  text-align:center;
+    margin:auto;
+  @media (max-width:768px){
+    width:300px;
+    background:#EE4344;
+    text-align:center;
+    margin:auto;
+
+}
 `;
 
 const Main = styled.div`
-  background-image: url(${img});
+width:auto;
+
 `;
 
 function Desc(props) {
-  // let index = 0;
-  let { id } = useParams();
+    let {id} = useParams();
+
 
   useEffect(() => {
     props.dispatch(fetchMenu(id));
@@ -53,51 +91,71 @@ function Desc(props) {
     // eslint-disable-next-line
   }, []);
 
-  function input() {
+   function input(){
+        return (
+                <SectionCard>
+                    <Card>
+
+                         <img src={props.detail.featured_image} alt="food"/>
+
+                    </Card>
+ 
+                     <Content>
+
+                        <p><strong>{props.detail.name}</strong></p>
+                        <p>Average Price : {props.detail.average_cost_for_two}</p>
+                        <p>Address: {props.detail.location.address}</p>
+                        <a href={`tel:${props.detail.phone_numbers}`}><img src={img} alt='logo' width="36px"/></a>
+                       
+                     </Content>
+
+
+                  
+                </SectionCard>
+              
+        )
+    };
+  
     return (
-      <SectionCard>
-        <Card>
-          <img width="100%" src={props.detail.featured_image} alt="food" />
-          <CardBody>
-            <CardText>
-              <h3>{props.detail.name}</h3>
-              <p>Average Price : {props.detail.average_cost_for_two}</p>
-              <p>Address: {props.detail.location.address}</p>
-            </CardText>
-          </CardBody>
-        </Card>
-      </SectionCard>
-    );
-  }
+        <Main>
 
-  return (
-    <Main>
-      <Div>
-        {props.detail.R !== undefined && input()}
+        <Div>
+            {props.detail.R !== undefined &&
+            input()
+            }
 
-        <SectionMenu>
-          <h2>MENU</h2>
+            <SectionMenu>
 
-          {props.desc !== undefined &&
-            props.desc.map((item) => {
-              return (
-                <div>
-                  <p>{item.daily_menu.name}</p>
-                </div>
-              );
-            })}
-        </SectionMenu>
-      </Div>
-    </Main>
-  );
-}
+            <h2>MENU</h2>
+
+            {props.desc !== undefined &&
+           //eslint-disable-next-line
+             props.desc.map((item )=> {
+                if (item.daily_menu.name !== null) {
+                    
+                    return (
+                        <div >                  
+                        <p>{item.daily_menu.name}</p>
+                       </div>
+                    )
+                }
+             
+             })}
+            </SectionMenu>
+       
+        </Div>
+        </Main>
+    )
+}      
+
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    // detail: state.desc,
-    desc: state.desc.daily_menus,
-    detail: state.detail,
-  };
+    console.log(state)
+    return {
+        desc:state.desc.daily_menus,
+        detail:state.detail,
+    }    
+    
+
 };
 export default connect(mapStateToProps, null)(Desc);
